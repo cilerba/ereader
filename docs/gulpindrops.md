@@ -1,7 +1,7 @@
 
 **Gulpin Drops**
 
-|**Common** (60%) | **Uncommon** (10%) | **Rare** (8%) | **Ultra Rare** (2%) |
+|**Common** (70%) | **Uncommon** (20%) | **Rare** (8%) | **Ultra Rare** (2%) |
 |--|--|--|--|
 | Smoke Ball | Sitrus Berry | White Herb | Lucky Egg |
 | Everstone | Upgrade | Shell Bell | Amulet Coin |
