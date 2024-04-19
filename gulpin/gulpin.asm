@@ -99,7 +99,7 @@ GiveItem:
 	checkitem VAR_GULPIN_0x40FF, 1
 	compare LASTRESULT, TRUE
 	virtualgotoif NOT_EQUAL, NoShardEnd
-	removeitem VAR_ITEM_ID, 1	
+	removeitem VAR_GULPIN_0x40FF, 1	
 	
 	bufferitemname STR_VAR_1, VAR_GULPIN_0x40FF
 	virtualmsgbox HandedShard
