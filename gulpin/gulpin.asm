@@ -122,7 +122,7 @@ GiveItem:
 	waitmovement $FF
 
 .skipGulpin
-	setvar VAR_TEMP_3, 5	
+	setvar VAR_TEMP_3, 10 ; How many items should dispense
 GulpinLoop:
 	random 100
 	compare LASTRESULT, 70
