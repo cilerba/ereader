@@ -3,7 +3,7 @@ A repository of custom e-Reader cards based on [Artrios](https://github.com/Artr
 
 ## Available Cards
 
-### Gluttunous Gulpin
+### Gluttonous Gulpin
 A recreation of Pokémon Scarlet and Violet: Indigo Disk DLC's Item Printer. This event can be found in Fortree City's House #3 just above the Gym.
 
 The NPC in the house will ask you if you'd like to see their Gulpin's "cool trick," which will cost you a shard of any color. This color is rolled once a day when interacting with this NPC and remains set until the following day's re-roll.
@@ -14,7 +14,7 @@ Drop table can be found in `docs/gulpindrops.md`
 
 
 ### Pory Printer
-An event similar to Gluttunous Gulpin that flashes and dispenses TM discs (ranging from 1-50) in exchange for $10,000. This can be found in the Devon Corporation building in Rustboro City on the second floor.
+An event similar to Gluttonous Gulpin that flashes and dispenses TM discs (ranging from 1-50) in exchange for $10,000. This can be found in the Devon Corporation building in Rustboro City on the second floor.
 
 This event does not utilize any unused variables, flags, or save block data. Every TM should have an equal chance at being distributed as there are no tiers implemented.
 
