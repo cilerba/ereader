@@ -1,0 +1,17 @@
+*.bin
+*.gbc
+*.o
+*.tx
+*.z80
+*.mev
+*.pyc
+/.vs/pokecarde/v16
+/.vs
+*.raw
+nedcenc.exe
+nedclib.dll
+nedcmake
+nevpk
+rgblink
+rgbasm
+*.vpk
