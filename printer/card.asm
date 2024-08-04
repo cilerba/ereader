@@ -12,7 +12,7 @@ Prologue:
 	INCBIN "prologue-{REGION_NAME}.bin"
 
 DataPacket: ; 164a
-	INCBIN "printer-{REGION_NAME}.mev"
+	INCBIN "script-{REGION_NAME}.mev"
 	db 0,0,0 ; padding
 
 INCLUDE "../common/mem_struct.asm"

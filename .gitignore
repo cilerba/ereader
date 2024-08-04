@@ -8,10 +8,7 @@
 /.vs/pokecarde/v16
 /.vs
 *.raw
-nedcenc.exe
-nedclib.dll
-nedcmake
-nevpk
-rgblink
-rgbasm
+tools/*
 *.vpk
+bin
+*.sav
