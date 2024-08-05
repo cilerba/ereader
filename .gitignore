@@ -8,7 +8,6 @@
 /.vs/pokecarde/v16
 /.vs
 *.raw
-tools/*
 *.vpk
 bin
 *.sav
