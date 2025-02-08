@@ -45,7 +45,7 @@ $(CARD_NAME)-%.raw: $(CARD_NAME)-%.vpk
 
 sav:
 	../tools/nedcenc -d -i $(FILE_NAME)-01.raw -o $(FILE_NAME)-01.bin
-ifeq (,$(wildcard $(FILE_NAME)-02.raw))
+ifneq (,$(wildcard $(FILE_NAME)-02.raw))
 	../tools/nedcenc -d -i $(FILE_NAME)-02.raw -o $(FILE_NAME)-02.bin
 	../tools/vpktool -i $(FILE_NAME)-01.bin -i2 $(FILE_NAME)-02.bin -o $(FILE_NAME).sav
 else
