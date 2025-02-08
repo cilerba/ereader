@@ -25,3 +25,12 @@ def asmQuote(t):
 	if quoted:
 		result += '"'
 	return result
+
+def asmQuoteBytes(t):
+	result = ""
+	for b in t:
+		result += '{0}'.format(ord(b)) + ","
+
+	result = result[:-1]
+
+	return result

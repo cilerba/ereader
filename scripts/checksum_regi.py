@@ -51,7 +51,7 @@ for i in pos:
 		start_address = struct.unpack('<I', data[i+1:i+5])[0] - base_address
 		wordwises.append([start_address + 0x13C, start_address, start_address + 0x13C])
 	elif chunk_type < 0x02 or chunk_type > 0x11:
-		print "Unknown chunk {0:X}".format(chunk_type)
+		print("Unknown chunk {0:X}".format(chunk_type))
 		raise TypeError
 	i += chunk_lengths[chunk_type]
 
