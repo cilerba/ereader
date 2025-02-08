@@ -11,3 +11,4 @@
 *.vpk
 bin
 *.sav
+.vscode
