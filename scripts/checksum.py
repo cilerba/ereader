@@ -85,5 +85,5 @@ for crc in crcs:
 
 
 # write the updated file
-out = open(sys.argv[2], 'w')
+out = open(sys.argv[2], 'wb')
 out.write(data)

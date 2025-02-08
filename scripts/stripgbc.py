@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 
-out = open(sys.argv[2], 'w')
+out = open(sys.argv[2], 'wb')
 buffering = False
 buf = ""
 with open(sys.argv[1], 'rb') as f:
