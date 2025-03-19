@@ -127,7 +127,7 @@ ScriptBaseAddress EQU $100
 	SECTION "mysteryevent", ROM0[$100]
 	db $01
 	dd $02000000
-	db REGION_JP,0,REGION_JP,0,0,0,$04,0,$80,$03,0,0
+	db REGION_EN,0,REGION_EN,0,0,0,$04,0,$80,$01,0,0 ; $01 R/S ; $02 E
 	ENDM
 
 REGION_JP EQU $01

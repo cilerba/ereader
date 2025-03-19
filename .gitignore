@@ -11,4 +11,6 @@
 *.vpk
 bin
 *.sav
+*.sa2
+*.gba
 .vscode

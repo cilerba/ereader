@@ -3,7 +3,7 @@ import sys
 
 out = open(sys.argv[2], 'wb')
 buffering = False
-buf = ""
+buf = bytes()
 with open(sys.argv[1], 'rb') as f:
 	f.read(256) # skip to $0100
 	while True:
@@ -13,16 +13,18 @@ with open(sys.argv[1], 'rb') as f:
 
 		# the program shall end with $FF followed only by $00 bytes
 		# for every $FF we hit, buffer until something that isn’t $00
-		if (not buffering and ord(byte) == 0xFF) or (buffering and ord(byte) == 0x00):
+		if not buffering and ord(byte) == 0xFF:
 			buf += byte
 			buffering = True
+		elif buffering and ord(byte) == 0x00:
+			buf += byte
 		elif buffering and ord(byte) == 0xFF:
 			out.write(buf)
 			buf = byte
 		elif buffering:
 			out.write(buf)
 			out.write(byte)
-			buf = ""
+			buf = bytes()
 			buffering = False
 		else:
 			out.write(byte)

@@ -17,10 +17,18 @@ VAR_0x800A EQU $800A
 VAR_0x800B EQU $800B
 LASTRESULT EQU $800D
 
-VAR_GULPIN_0x40FF EQU $40FF
+VAR_UNUSED_0x40C8 EQU $40C8 ; RS: GX Comm. [Pokémon]
+VAR_UNUSED_0x40C9 EQU $40C9 ; RS: GX Comm. [Move]
+VAR_UNUSED_0x40CA EQU $40CA ; RS: GX Comm. [Timer]
+VAR_UNUSED_0x40CB EQU $40CB ; RS: GX Comm. [TM (Self)]
+VAR_UNUSED_0x40CC EQU $40CC ; RS: GX Comm. [TM (Gift)]
+
+VAR_GULPIN_0x40FF EQU $40FF ; E: Gulpin [Daily Shard]
 
 VAR_ITEM_ID EQU $800E
 FLAG_DAILY_GULPIN_0x920 EQU $920
+
+FLAG_DAILY_UNKNOWN_8C3 EQU $8C9 ; RS: GX Comm. Daily Flag
 
 LESS_THAN			EQU 0
 EQUAL				EQU 1
@@ -30,6 +38,7 @@ GREATER_THAN_EQUAL	EQU 4
 NOT_EQUAL			EQU 5
 
 STR_VAR_1 EQU $0
+STR_VAR_2 EQU $1
 
 FADE_FROM_BLACK  EQU 0
 FADE_TO_BLACK    EQU 1
@@ -58,6 +67,10 @@ end: MACRO
 	ENDM
 return: MACRO
 	db $03
+	ENDM
+callscr: MACRO
+	db $04
+	dd \1
 	ENDM
 goto: MACRO
 	db $05
@@ -166,9 +179,22 @@ copyvarifnotzero: MACRO
 	db $1A
 	dw \1, \2
 	ENDM
+comparelocaltovalue: MACRO
+	db $1C
+	db \1, \2
+	ENDM
+compareaddrtovalue: MACRO
+	db $1F
+	dd \1
+	db \2
+	ENDM
 compare: MACRO
 	db $21
 	dw \1, \2
+	ENDM
+clearflag: MACRO
+	db $2A
+	dw \1
 	ENDM
 setflag: MACRO
 	db $29
@@ -246,9 +272,9 @@ givemon: MACRO
 	dw \1
 	db \2
 	dw \3
-	dd \4
-	dd \5
-	db \6
+	dd $00000000
+	dd $00000000
+	db $00
 	ENDM
 giveegg: MACRO
 	db $7A
@@ -392,6 +418,13 @@ playse: MACRO
 	ENDM
 waitse: MACRO
 	db $30
+	ENDM
+playfanfare: MACRO
+	db $31
+	dw \1
+	ENDM
+waitfanfare: MACRO
+	db $32
 	ENDM
 playbgm: MACRO
 	db $33
@@ -657,4 +690,60 @@ gulpintable: MACRO
 	dw MASTER_BALL
 	dw RARE_CANDY
 	dw ITEM_NONE
+	ENDM
+vblankhijack: MACRO
+	db $00
+	db $00
+	db $01
+	db $48
+	db $02
+	db $49
+	db $01
+	db $60
+	db $70
+	db $47
+	db $CC
+	db $1B
+	db $00
+	db $03
+	db $71
+	db $A1
+	db $01
+	db $02
+	ENDM
+writedata: MACRO
+	db $1E
+	db $20
+	db $01
+	db $49
+	db $01
+	db $4A
+	db $10
+	db $47
+	db $64
+	db $00
+	db $00
+	db $02
+	db $41
+	db $54
+	db $12
+	db $08
+	ENDM
+readdata: MACRO
+	db $1E
+	db $20
+	db $01
+	db $49
+	db $01
+	db $4A
+	db $10
+	db $47
+	db $20
+	db $A0
+	db $01
+	db $02
+	db $F9
+	db $5B
+	db $12
+	db $08
 	ENDM

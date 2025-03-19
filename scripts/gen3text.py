@@ -258,7 +258,7 @@ chars = {
 	#'⬅': '\xF9',
 	'\\l': '\xFA',
 	'\\p': '\xFB',
-	'\{FC}': '\xFC',
+	#'\{FC}': '\xFC',
 	'\\v1': '\xFD\x01',
 	'\\v2': '\xFD\x02',
 	'\\v3': '\xFD\x03',
@@ -307,40 +307,40 @@ chars = {
 	'ñ': '\x29',
 	'º': '\x2A',
 	'ª': '\x2B',
-	'\{er}': '\x2C',
+	#'\{er}': '\x2C',
 	'&': '\x2D',
 	'+': '\x2E',
-	'\{L.}': '\x34',  # Italian 
-	'\{Lv}': '\x34',  # English
-	'\{Lv.}': '\x34', # German
-	'\{N.}': '\x34',  # French
-	'\{Nv}': '\x34',  # Spanish
+	#'\{L.}': '\x34',  # Italian
+	#'\{Lv}': '\x34',  # English
+	#'\{Lv.}': '\x34', # German
+	#'\{N.}': '\x34',  # French
+	#'\{Nv}': '\x34',  # Spanish
 	'=': '\x35',
 	';': '\x36', # European
 	'¿': '\x51',
 	'¡': '\x52',
-	'\{PKMN}': '\x53\x54',
-	'\{POKé}': '\x55\x56',
-	'\{POKéBLOC}': '\x55\x56\x57\x58\x59',   # French
-	'\{POKéBLOCK}': '\x55\x56\x57\x58\x59',  # English
-	'\{POKéCUBO}': '\x55\x56\x57\x58\x59',   # Spanish
-	'\{POKéRIEGEL}': '\x55\x56\x57\x58\x59', # German
+	#'\{PKMN}': '\x53\x54',
+	#'\{POKé}': '\x55\x56',
+	#'\{POKéBLOC}': '\x55\x56\x57\x58\x59',   # French
+	#'\{POKéBLOCK}': '\x55\x56\x57\x58\x59',  # English
+	#'\{POKéCUBO}': '\x55\x56\x57\x58\x59',   # Spanish
+	#'\{POKéRIEGEL}': '\x55\x56\x57\x58\x59', # German
 	'Í': '\x5A',
 	'%': '\x5B',
 	'(': '\x5C',
 	')': '\x5D',
-	'\{POKéMELLA}': '\x5E\x5F\x60\x61\x62',  # Italian
-	'\{POKéMELLE}': '\x5E\x5F\x60\x61\x63',  # Italian
+	#'\{POKéMELLA}': '\x5E\x5F\x60\x61\x62',  # Italian
+	#'\{POKéMELLE}': '\x5E\x5F\x60\x61\x63',  # Italian
 	'â': '\x68',
 	'í': '\x6F',
 	'⬆': '\x79',
 	'⬇': '\x7A',
 	'⬅': '\x7B',
 	'➡': '\x7C',
-	'\{e}': '\x84',  # European
+	#'\{e}': '\x84',  # European
 	'‹': '\x85',     # European
 	'›': '\x86',     # European
-	'\{re}': '\xA0', # European
+	#'\{re}': '\xA0', # European
 	'0': '\xA1',
 	'1': '\xA2',
 	'2': '\xA3',
@@ -422,60 +422,24 @@ chars = {
 	':': '\xF0',
 }
 
-asmProblemBytes = ['\x00', '\x09', '\x0A', '\x22']
-
-
 def utf8ToRSText(t, region = ""):
 	currentChars = chars
 	if region == "DE":
 		chars['“'] = '\xB2'
 
-	characters = []
-	char = ""
-	while len(t):
-		if ord(t[0]) >= 0xF0:
-			char += t[0:4]
-			t = t[4:]
-		elif ord(t[0]) >= 0xE0:
-			char += t[0:3]
-			t = t[3:]
-		elif ord(t[0]) >= 0xC0:
-			char += t[0:2]
-			t = t[2:]
-		else:
-			char += t[0:1]
-			t = t[1:]
-		if char != "\\" and char != "\\v" and (char[0:2] != "\\{" or char[-1] == "}"):
-			characters.append(char)
-			char = ""
-
 	result = ""
-	for char in characters:
-		result += chars[char]
-	return result
+	key = ''
+	for char in t:
+ 		if key != '':
+ 			key += char
+ 			if key in chars:
+ 				result += chars[key]
+ 				key = ''
+ 			continue
 
-def asmQuote(t):
-	result = ""
-	quoted = False
-	if t[0] in asmProblemBytes:
-		result = '{0}'.format(ord(t[0]))
-	else:
-		result = '"' + t[0]
-		quoted = True
+ 		if char not in chars:
+ 			key = char
+ 			continue
 
-	while len(t):
-		if quoted and t[0] in asmProblemBytes:
-			result += '",{0}'.format(ord(t[0]))
-			quoted = False
-		elif quoted:
-			result += t[0]
-		elif t[0] in asmProblemBytes:
-			result += ',{0}'.format(ord(t[0]))
-			quoted = False
-		else:
-			result += ',"' + t[0]
-			quoted = True
-		t = t[1:]
-	if quoted:
-		result += '"'
+ 		result += chars[char]
 	return result

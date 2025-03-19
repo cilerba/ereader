@@ -1,12 +1,10 @@
 CARD_ID			?=
 VERSION 		?=
 REGION			?=
+REV				?=
+GAME			?=
 
-# 0 = Ruby
-# 1 = Sapphire
-# 2 = Emerald
-GAME			?= 0
-CARD_NAME		= $(CARD_ID)_$(VERSION)
+CARD_NAME		= $(CARD_ID)_$(VERSION)$(REV)$(GAME)
 FILE_NAME		= $(CARD_NAME)-$(REGION)
 
 CARD_ASM		= card
@@ -17,8 +15,8 @@ all: $(FILE_NAME).raw sav
 
 $(SCRIPT_ASM)-%.tx: $(SCRIPT_ASM).asm
 	python ../scripts/regionalize.py $< $@ $* $*
-$(SCRIPT_ASM)-%.o: $(SCRIPT_ASM)-%.tx	
-	../tools/rgbasm -o $@ $<
+$(SCRIPT_ASM)-%.o: $(SCRIPT_ASM)-%.tx
+	../tools/rgbasm -o $@ $< -D $(REV) -D $(GAME)
 $(SCRIPT_ASM)-%.gbc: $(SCRIPT_ASM)-%.o
 	../tools/rgblink -o $@ $<
 $(SCRIPT_ASM)-%.bin: $(SCRIPT_ASM)-%.gbc

@@ -10,7 +10,6 @@ wordwise_results = []
 crcs = []
 crc_results = []
 
-data = ""
 with open(sys.argv[1], 'rb') as f:
 	data = f.read()
 f.closed
@@ -18,7 +17,7 @@ f.closed
 base_address = struct.unpack('<I', data[1:5])[0]
 i = 0x11 # first chunk location
 while i < len(data):
-	chunk_type = ord(data[i])
+	chunk_type = data[i]
 	if chunk_type == 0x02: # END_OF_CHUNKS
 		break
 	elif chunk_type == 0x07: # CUSTOM_BERRY
@@ -36,7 +35,7 @@ while i < len(data):
 		end_address = struct.unpack('<I', data[i+9:i+13])[0] - base_address
 		crcs.append([i + 1, start_address, end_address])
 	elif chunk_type < 0x02 or chunk_type > 0x10:
-		print "Unknown chunk {0:X}".format(chunk_type)
+		print("Unknown chunk {0:X}".format(chunk_type))
 		raise TypeError
 	i += chunk_lengths[chunk_type]
 
@@ -57,7 +56,7 @@ for wordwise in wordwises:
 for bytewise in bytewises:
 	sum = 0
 	for i in range(bytewise[1], bytewise[2]):
-		sum = (sum + ord(data[i])) & 0xFFFFFFFF
+		sum = (sum + data[i]) & 0xFFFFFFFF
 	bytewise_results.append(sum)
 i = 0
 for bytewise in bytewises:
@@ -69,7 +68,7 @@ for bytewise in bytewises:
 for crc in crcs:
 	sum = 0x1121
 	for i in range(crc[1], crc[2]):
-		sum ^= ord(data[i])
+		sum ^= data[i]
 		for j in range(8):
 			if(sum & 1):
 				sum = (sum >> 1) ^ 0x8408
