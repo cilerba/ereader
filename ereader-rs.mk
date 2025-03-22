@@ -11,12 +11,12 @@ CARD_ASM		= card
 SCRIPT_ASM		= script
 PROLOGUE_ASM	= prologue
 
-all: $(FILE_NAME).raw sav
+all: $(FILE_NAME).raw
 
 $(SCRIPT_ASM)-%.tx: $(SCRIPT_ASM).asm
 	python ../scripts/regionalize.py $< $@ $* $*
 $(SCRIPT_ASM)-%.o: $(SCRIPT_ASM)-%.tx
-	../tools/rgbasm -o $@ $< -D $(REV) -D $(GAME)
+	../tools/rgbasm -o $@ $< -D $(REV)=1 -D $(GAME)=1
 $(SCRIPT_ASM)-%.gbc: $(SCRIPT_ASM)-%.o
 	../tools/rgblink -o $@ $<
 $(SCRIPT_ASM)-%.bin: $(SCRIPT_ASM)-%.gbc

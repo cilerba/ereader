@@ -4,8 +4,12 @@ INCLUDE "../constants/scriptcommands.asm"
 INCLUDE "../constants/pokemon.asm"
 INCLUDE "../constants/moves.asm"
 INCLUDE "../constants/gxcomm_data.asm"
-INCLUDE "../constants/gxcomm_r1.asm"
-INCLUDE "../constants/gxcomm.asm"
+INCLUDE "../constants/gxcomm_r.asm"
+INCLUDE "../constants/gxcomm_r_r1.asm"
+INCLUDE "../constants/gxcomm_r_r2.asm"
+INCLUDE "../constants/gxcomm_s.asm"
+INCLUDE "../constants/gxcomm_s_r1.asm"
+INCLUDE "../constants/gxcomm_s_r2.asm"
 
 	Mystery_Event
 
@@ -36,13 +40,24 @@ GXCommScriptStart:
 	vgoto .begin
 	
 	vblankhijack
-IF DEF(_BASE)
-	readdata
-ELIF DEF(_REV1)
-	asmread_r1
-ELIF DEF(_REV2)
-	asmread_r1
+IF DEF(_RUBY)
+	IF DEF(_BASE)
+		asmread_r
+	ELIF DEF(_REV1)
+		asmread_r_r1
+	ELIF DEF(_REV2)
+		asmread_r_r2
+	ENDC
+ELIF DEF(_SAPP)
+	IF DEF(_BASE)
+		asmread_s
+	ELIF DEF(_REV1)
+		asmread_s_r1
+	ELIF DEF(_REV2)
+		asmread_s_r2
+	ENDC
 ENDC
+
 	Text_EN "GX OUTBREAK\nMINUTES: \v2@"
 
 	; laziness below
@@ -100,12 +115,22 @@ ENDC
 	copybyte $02028507, $02026C0B
 	setflag FLAG_DAILY_UNKNOWN_8C3
 
-IF DEF(_BASE)
-	callscr $0819f806 ; Common_EventScript_SaveGame
-ELIF DEF(_REV1)
-	callscr $0819f826 ; Common_EventScript_SaveGame
-ELIF DEF(_REV2)
-	callscr $0819f826 ; Common_EventScript_SaveGame
+IF DEF(_RUBY)
+	IF DEF(_BASE)
+		callscr $0819f806 ; Common_EventScript_SaveGame
+	ELIF DEF(_REV1)
+		callscr $0819f826 ; Common_EventScript_SaveGame
+	ELIF DEF(_REV2)
+		callscr $0819f826 ; Common_EventScript_SaveGame
+	ENDC
+ELIF DEF(_SAPP)
+	IF DEF(_BASE)
+		callscr $0819f796 ; Common_EventScript_SaveGame
+	ELIF DEF(_REV1)
+		callscr $0819f7b6 ; Common_EventScript_SaveGame
+	ELIF DEF(_REV2)
+		callscr $0819f7b6 ; Common_EventScript_SaveGame
+	ENDC
 ENDC
 	compare LASTRESULT, FALSE
 	virtualgotoif EQUAL, .clearFlag

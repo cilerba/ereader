@@ -1,8 +1,8 @@
 
 CARD_ID			:= GXCOMM-INIT
-VERSION			:= v1
+VERSION			:= v2
 REGION			:= EN
-REV				:= _REV2
-GAME			:= _SAPPHIRE
+REV				:= _BASE
+GAME			:= _RUBY
 
 include ../ereader-rs.mk

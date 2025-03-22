@@ -1,22 +1,4 @@
-asmstore: MACRO
-    db $1E
-    db $20
-    db $01
-    db $49
-    db $01
-    db $4A
-    db $10
-    db $47
-    db $64
-    db $00
-    db $00
-    db $02
-    db $41
-    db $54
-    db $12
-    db $08
-    ENDM
-gxcomm: MACRO
+gxcomm_s_r1: MACRO
     db $00
     db $B5
     db $F0
@@ -241,24 +223,24 @@ gxcomm: MACRO
     db $A4
     db $01
     db $02
-    db $61
+    db $81
     db $19
     db $08
     db $08
-    db $55
+    db $79
     db $12
     db $07
     db $08
-    db $F5
-    db $AC
+    db $19
+    db $AD
     db $07
     db $08
     db $38
     db $40
     db $00
     db $03
-    db $25
-    db $96
+    db $35
+    db $95
     db $00
     db $08
     db $90
@@ -277,15 +259,15 @@ gxcomm: MACRO
     db $31
     db $02
     db $02
-    db $45
+    db $69
     db $2C
     db $07
     db $08
-    db $09
+    db $2D
     db $1F
     db $07
     db $08
-    db $51
+    db $75
     db $1E
     db $07
     db $08
@@ -465,7 +447,7 @@ gxcomm: MACRO
     db $4E
     db $FF
     db $F7
-    db $DC
+    db $86
     db $FF
     db $07
     db $1C
@@ -477,7 +459,7 @@ gxcomm: MACRO
     db $4E
     db $FF
     db $F7
-    db $D6
+    db $80
     db $FF
     db $06
     db $1C
@@ -509,7 +491,7 @@ gxcomm: MACRO
     db $4E
     db $FF
     db $F7
-    db $C6
+    db $70
     db $FF
     db $04
     db $B0
@@ -521,7 +503,7 @@ gxcomm: MACRO
     db $4E
     db $FF
     db $F7
-    db $C0
+    db $6A
     db $FF
     db $05
     db $1C
@@ -531,7 +513,7 @@ gxcomm: MACRO
     db $4E
     db $FF
     db $F7
-    db $BB
+    db $65
     db $FF
     db $01
     db $28
@@ -547,14 +529,14 @@ gxcomm: MACRO
     db $4E
     db $FF
     db $F7
-    db $B3
+    db $5D
     db $FF
     db $FF
     db $F7
     db $B0
     db $FF
-    db $E1
-    db $0C
+    db $01
+    db $0D
     db $04
     db $08
     db $00
@@ -565,7 +547,7 @@ gxcomm: MACRO
     db $40
     db $00
     db $00
-    db $55
+    db $79
     db $92
     db $06
     db $08
@@ -581,7 +563,7 @@ gxcomm: MACRO
     db $A7
     db $03
     db $08
-    db $3D
+    db $61
     db $F0
     db $06
     db $08
@@ -589,23 +571,23 @@ gxcomm: MACRO
     db $B6
     db $03
     db $08
-    db $09
-    db $0F
+    db $B1
+    db $0E
     db $1E
     db $08
-    db $85
+    db $A5
     db $0E
     db $04
     db $08
-    db $6D
+    db $8D
     db $4D
     db $08
     db $08
-    db $54
-    db $D4
+    db $B4
+    db $D2
     db $39
     db $08
-    db $A5
+    db $C5
     db $0B
     db $11
     db $08
@@ -655,10 +637,10 @@ gxcomm: MACRO
     db $48
     db $0C
     db $4E
-    db $00
-    db $F0
-    db $0B
-    db $F8
+    db $FF
+    db $F7
+    db $26
+    db $FF
     db $09
     db $48
     db $01
@@ -685,12 +667,12 @@ gxcomm: MACRO
     db $47
     db $C0
     db $46
-    db $85
+    db $A5
     db $0E
     db $04
     db $08
-    db $09
-    db $0F
+    db $B1
+    db $0E
     db $1E
     db $08
     db $20
@@ -705,7 +687,7 @@ gxcomm: MACRO
     db $00
     db $00
     db $00
-    db $71
+    db $95
     db $92
     db $06
     db $08
@@ -805,12 +787,14 @@ gxcomm: MACRO
     db $6C
     db $02
     db $02
-    db $04
-    db $65
+    db $AC
+    db $64
     db $37
     db $08
     db $21
     db $01
+    db $00
+    db $00
     db $00
     db $00
     db $00

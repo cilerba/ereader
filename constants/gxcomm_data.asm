@@ -340,3 +340,147 @@ gxmons_s: MACRO
     dw ICE_BEAM
     dw DRAGON_CLAW
     ENDM
+asmstore: MACRO
+    db $1E
+    db $20
+    db $01
+    db $49
+    db $01
+    db $4A
+    db $10
+    db $47
+    db $64
+    db $00
+    db $00
+    db $02
+    db $41
+    db $54
+    db $12
+    db $08
+    ENDM
+asmstore_rev: MACRO
+    db $1E
+    db $20
+    db $01
+    db $49
+    db $01
+    db $4A
+    db $10
+    db $47
+    db $64
+    db $00
+    db $00
+    db $02
+    db $61
+    db $54
+    db $12
+    db $08
+    ENDM
+asmread_r: MACRO
+    db $1E
+    db $20
+    db $01
+    db $49
+    db $01
+    db $4A
+    db $10
+    db $47
+    db $20
+    db $A0
+    db $01
+    db $02
+    db $F9
+    db $5B
+    db $12
+    db $08
+    ENDM
+asmread_r_r1: MACRO
+    db $1E
+    db $20
+    db $01
+    db $49
+    db $01
+    db $4A
+    db $10
+    db $47
+    db $20
+    db $A0
+    db $01
+    db $02
+    db $19
+    db $5C
+    db $12
+    db $08
+    ENDM
+asmread_r_r2: MACRO
+    db $1E
+    db $20
+    db $01
+    db $49
+    db $01
+    db $4A
+    db $10
+    db $47
+    db $20
+    db $A0
+    db $01
+    db $02
+    db $19
+    db $5C
+    db $12
+    db $08
+    ENDM
+asmread_s: MACRO
+    db $1E
+    db $20
+    db $01
+    db $49
+    db $01
+    db $4A
+    db $10
+    db $47
+    db $20
+    db $A0
+    db $01
+    db $02
+    db $F9
+    db $5B
+    db $12
+    db $08
+    ENDM
+asmread_s_r1: MACRO
+    db $1E
+    db $20
+    db $01
+    db $49
+    db $01
+    db $4A
+    db $10
+    db $47
+    db $20
+    db $A0
+    db $01
+    db $02
+    db $19
+    db $5C
+    db $12
+    db $08
+    ENDM
+asmread_s_r2: MACRO
+    db $1E
+    db $20
+    db $01
+    db $49
+    db $01
+    db $4A
+    db $10
+    db $47
+    db $20
+    db $A0
+    db $01
+    db $02
+    db $19
+    db $5C
+    db $12
+    db $08
+    ENDM

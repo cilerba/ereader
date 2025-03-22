@@ -8,12 +8,25 @@
 ASMLocation:
     .long   0x0201a020
 DoReadFlashWholeSection:
-.ifdef BASE
-    .long   0x08125bf9
+.ifdef RUBY
+    .ifdef BASE
+        .long   0x08125bf9
+    .endif
+    .ifdef REV1
+        .long   0x08125c19
+    .endif
+    .ifdef REV2
+        .long   0x08125c19
+    .endif
 .endif
-.ifdef REV1
-    .long   0x08125c19
-.endif
-.ifdef REV2
-    .long   0x08125c19
+.ifdef SAPP
+    .ifdef BASE
+        .long   0x08125bf9
+    .endif
+    .ifdef REV1
+        .long   0x08125c19
+    .endif
+    .ifdef REV2
+        .long   0x08125c19
+    .endif
 .endif

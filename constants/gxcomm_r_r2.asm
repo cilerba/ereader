@@ -1,22 +1,4 @@
-asmstore_r1: MACRO
-    db $1E
-    db $20
-    db $01
-    db $49
-    db $01
-    db $4A
-    db $10
-    db $47
-    db $64
-    db $00
-    db $00
-    db $02
-    db $61
-    db $54
-    db $12
-    db $08
-    ENDM
-gxcomm_r1: MACRO
+gxcomm_r_r2: MACRO
     db $00
     db $B5
     db $F0
@@ -465,7 +447,7 @@ gxcomm_r1: MACRO
     db $4E
     db $FF
     db $F7
-    db $DC
+    db $86
     db $FF
     db $07
     db $1C
@@ -477,7 +459,7 @@ gxcomm_r1: MACRO
     db $4E
     db $FF
     db $F7
-    db $D6
+    db $80
     db $FF
     db $06
     db $1C
@@ -509,7 +491,7 @@ gxcomm_r1: MACRO
     db $4E
     db $FF
     db $F7
-    db $C6
+    db $70
     db $FF
     db $04
     db $B0
@@ -521,7 +503,7 @@ gxcomm_r1: MACRO
     db $4E
     db $FF
     db $F7
-    db $C0
+    db $6A
     db $FF
     db $05
     db $1C
@@ -531,7 +513,7 @@ gxcomm_r1: MACRO
     db $4E
     db $FF
     db $F7
-    db $BB
+    db $65
     db $FF
     db $01
     db $28
@@ -547,7 +529,7 @@ gxcomm_r1: MACRO
     db $4E
     db $FF
     db $F7
-    db $B3
+    db $5D
     db $FF
     db $FF
     db $F7
@@ -581,9 +563,9 @@ gxcomm_r1: MACRO
     db $A7
     db $03
     db $08
-    db $5D
-    db $F0
-    db $06
+    db $01
+    db $0D
+    db $04
     db $08
     db $A5
     db $B6
@@ -655,10 +637,10 @@ gxcomm_r1: MACRO
     db $48
     db $0C
     db $4E
-    db $00
-    db $F0
-    db $0B
-    db $F8
+    db $FF
+    db $F7
+    db $26
+    db $FF
     db $09
     db $48
     db $01
@@ -835,22 +817,6 @@ gxcomm_r1: MACRO
     db $00
     db $00
     db $00
-    ENDM
-asmread_r1: MACRO
-    db $1E
-    db $20
-    db $01
-    db $49
-    db $01
-    db $4A
-    db $10
-    db $47
-    db $20
-    db $A0
-    db $01
-    db $02
-    db $19
-    db $5C
-    db $12
-    db $08
-    ENDM
+    db $00
+    db $00
+ENDM
