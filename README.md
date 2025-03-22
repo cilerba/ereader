@@ -3,6 +3,9 @@ A repository of custom e-Reader cards based on [Artrios](https://github.com/Artr
 
 ## Available Cards
 
+### GX COMM. (Ruby & Sapphire)
+A Mass Outbreak overhaul inspired by Pokémon GO Community Day events. Speak witb Lanette after scanning the INIT card first and then the regular card that matches your game and revision. 
+
 ### Gluttonous Gulpin
 A recreation of Pokémon Scarlet and Violet: Indigo Disk DLC's Item Printer. This event can be found in Fortree City's House #3 just above the Gym.
 
